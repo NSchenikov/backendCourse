@@ -1,0 +1,242 @@
+{
+  "info": {
+    "_postman_id": "6801943d-4a65-49d3-a54f-c2d1496ed4a8",
+    "name": "HW2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30162531"
+  },
+  "item": [
+    {
+      "name": "Library",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is correct\", function () {",
+              "    pm.response.to.be.header(\"Content-Type\",'text/plain');",
+              "});",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Alex = War and Peace\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{api.url}}/?{{user}}={{book}}",
+          "host": ["{{api.url}}"],
+          "path": [""],
+          "query": [
+            {
+              "key": "{{user}}",
+              "value": "{{book}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is correct\", function () {",
+              "    pm.response.to.be.header(\"Content-Type\",\"application/json\");",
+              "});",
+              "pm.test(\"Your test name\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData[0].id).to.eql(1);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "Alex",
+              "type": "text"
+            },
+            {
+              "key": "name",
+              "value": "Kate",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{api.url}}/?hello=users",
+          "host": ["{{api.url}}"],
+          "path": [""],
+          "query": [
+            {
+              "key": "hello",
+              "value": "users"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is correct\", function () {",
+              "    pm.response.to.be.header(\"Content-Type\",'text/plain');",
+              "});",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Alex = Idiot, The Cherry Orchard\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "Idiot, The Cherry Orchard"
+        },
+        "url": {
+          "raw": "{{api.url}}/?users=books",
+          "host": ["{{api.url}}"],
+          "path": [""],
+          "query": [
+            {
+              "key": "users",
+              "value": "books"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "delete books",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is correct\", function () {",
+              "    pm.response.to.be.header(\"Content-Type\",'text/plain');",
+              "});",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Alex = The Cherry Orchard\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "0"
+        },
+        "url": {
+          "raw": "{{api.url}}/?{{user}}=books",
+          "host": ["{{api.url}}"],
+          "path": [""],
+          "query": [
+            {
+              "key": "{{user}}",
+              "value": "books"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "add book",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test(\"Content-Type is correct\", function () {",
+              "    pm.response.to.be.header(\"Content-Type\",'text/plain');",
+              "});",
+              "pm.test(\"Body matches string\", function () {",
+              "    pm.expect(pm.response.text()).to.include(\"Alex = The Cherry Orchard, Crime and Punishment\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "1=Crime and Punishment"
+        },
+        "url": {
+          "raw": "{{api.url}}/?new-book={{book}}",
+          "host": ["{{api.url}}"],
+          "path": [""],
+          "query": [
+            {
+              "key": "",
+              "value": "",
+              "disabled": true
+            },
+            {
+              "key": "new-book",
+              "value": "{{book}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
